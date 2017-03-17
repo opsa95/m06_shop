@@ -1,0 +1,49 @@
+<form class="login2" name="shopManagement"
+ng-submit="reservationManagement.$valid && shopMngCtrl.insertShop()" novalidate>
+	<div class="container well">
+		<div class="form-horizontal" >
+			<div class="row">
+				<div class="col-xs-12"><h2>Add a new shop</h2></div>
+			</div>
+			<br/>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12" align="center"><h3>Shop Data</h3></div>
+				</div>
+				<label class="col-sm-2 control-label" for="formGroup">Shop Name *</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" ng-model="shopMngCtrl.shop.name" ng-pattern="/^[A-ZÑ][a-zA-Zñá-ú\s]+$/" required />
+				</div>
+				<label class="col-sm-2 control-label" for="formGroup">Shop Admin *</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text"  ng-model="shopMngCtrl.shop.shopAdmin" ng-pattern="/^[A-ZÑ][a-zA-Zñá-ú\s]+$/" required />
+				</div>
+				<label class="col-sm-2 control-label" for="formGroup">Shop Description *</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" ng-model="shopMngCtrl.shop.shopDescription" ng-pattern="/^[A-ZÑ][a-zA-Zñá-ú\s]+$/" />
+				</div>
+				<label class="col-sm-2 control-label" for="formGroup">Banner Image</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" ng-model="shopMngCtrl.shop.bannerImage" ng-pattern="/^[A-ZÑ][a-zA-Zñá-ú\s]+$/" required />
+				</div>
+
+
+			<br />
+			<br />
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="formGroup"></label>
+				<div class="col-sm-4">
+					<button class="btn btn-success" ng-disabled="shopMngCtrl.$invalid"> <!-- TODO -->
+						Submit
+					</button>
+				</div>
+				<div class="form-group col-sm-6">
+					<label>
+						<input class="btn btn-default btn-primary btn-block" type="button" value="Back" ng-click="$parent.showAction=0;">
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

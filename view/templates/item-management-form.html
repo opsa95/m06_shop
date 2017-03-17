@@ -1,0 +1,104 @@
+<div class="container well">
+  <div class="row">
+    <div class="col-lg-10">
+      <div>
+        <h1>List of all items</h1>
+        <div class="row">
+          <div class="col-xs-4">
+            <h3>Page: {{currentPage}}</h3>
+          </div>
+          <div class="col-sm-3">
+            <label for="search">Search by name:</label>
+            <input ng-model="nameSearch" id="search" class="form-control"
+            placeholder="Filter text" ng-disabled="itemsMngCtrl.$invalid">
+          </div>
+          <div class="col-sm-3">
+            <label for="search">Search by type:</label>
+            <input ng-model="typeSearch" id="search" class="form-control"
+            placeholder="Filter text" ng-disabled="itemsMngCtrl.$invalid">
+          </div>
+          <div class="col-sm-2">
+            <label for="search">items per page:</label>
+            <input type="number" min="1" max="100" class="form-control"
+            ng-model="pageSize" ng-disabled="itemsMngCtrl.$invalid">
+          </div>
+        </div>
+        <br>
+        <form class="login2" name="itemsManagement"
+        ng-submit="itemsMngCtrl.sendItems()" novalidate>
+          <div class="panel panel-default">
+            <div class="row">
+              <div class="col-sm-2">
+                <label>Id</label>
+              </div>
+              <div class="col-sm-2">
+                <label for="search">Name</label>
+              </div>
+              <div class="col-sm-2">
+                <label for="search">Description</label>
+              </div>
+              <div class="col-sm-2">
+                <label for="search">Price</label>
+              </div>
+              <div class="col-sm-2">
+                <label for="search">Units</label>
+              </div>
+              <div class="col-sm-2">
+                <label for="search">Expiration</label>
+              </div>
+            </div>
+            <div class="row" dir-paginate="review in filteredData | itemsPerPage: pageSize"
+                  current-page="currentPage">
+              <div class="col-sm-2">
+                <input type="number" class="form-control" id="id{{$index}}"
+                min="0" max="100"
+                ng-model="item.id" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="name{{$index}}"
+                ng-model="item.itemName" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="description{{$index}}"
+                ng-model="item.itemDescription" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="price{{$index}}"
+                ng-model="item.itemPrice" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="units{{$index}}"
+                ng-model="item.itemUnits" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="expiration{{$index}}"
+                ng-model="item.itemExpirationDate" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-left" boundary-links="true" ng-show="itemsMngCtrl.$valid">
+            <dir-pagination-controls boundary-links="true"
+            template-url="view/templates/dir-pagination-controls.html" ></dir-pagination-controls>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroup"></label>
+            <div class="col-sm-4">
+              <button type="submit"
+              ng-disabled="itemsMngCtrl.$invalid" class="btn btn-success">
+                Submit
+              </button>
+            </div>
+            <div class="form-group col-sm-6">
+              <label>
+                <input class="btn btn-default btn-primary btn-block"
+                type="button" value="Back" ng-click="$parent.showAction=0;">
+              </label>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
